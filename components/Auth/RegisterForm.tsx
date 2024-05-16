@@ -9,7 +9,7 @@ import { createUser } from "@/actions/users";
 import { UserRole } from "@prisma/client";
 import toast from "react-hot-toast";
 
-export default function RegisterForm({ role = "USER" }: { role: UserRole }) {
+export default function RegisterForm({ role = "USER" }: { role?: UserRole }) {
   const [isLoading, setIsLoading] = useState(false);
 
   const {
