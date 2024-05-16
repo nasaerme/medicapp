@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import Link from "next/link"
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -11,146 +11,157 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu"
+} from "@/components/ui/navigation-menu";
+import { usePathname } from "next/navigation";
 
 const megaMenu = [
   {
-    title:"Top Booked",
-    services:[
+    title: "Top Booked",
+    services: [
       {
-        title:"Telehealth",
-        slug:"tele-health",
-        description:"Lorem ipsum dolor, sit amet consectetur adipisicing elit. A, placeat."
+        title: "Telehealth",
+        slug: "tele-health",
+        description:
+          "Lorem ipsum dolor, sit amet consectetur adipisicing elit. A, placeat.",
       },
       {
-        title:"Video prescription refill",
-        slug:"tele-health",
-        description:"Lorem ipsum dolor, sit amet consectetur adipisicing elit. A, placeat."
+        title: "Video prescription refill",
+        slug: "tele-health",
+        description:
+          "Lorem ipsum dolor, sit amet consectetur adipisicing elit. A, placeat.",
       },
       {
-        title:"In-person doctor visit",
-        slug:"tele-health",
-        description:"Lorem ipsum dolor, sit amet consectetur adipisicing elit. A, placeat."
+        title: "In-person doctor visit",
+        slug: "tele-health",
+        description:
+          "Lorem ipsum dolor, sit amet consectetur adipisicing elit. A, placeat.",
       },
       {
-        title:"UTI consult",
-        slug:"tele-health",
-        description:"Lorem ipsum dolor, sit amet consectetur adipisicing elit. A, placeat."
+        title: "UTI consult",
+        slug: "tele-health",
+        description:
+          "Lorem ipsum dolor, sit amet consectetur adipisicing elit. A, placeat.",
       },
     ],
-    
   },
   {
-    title:"Doctors",
-    services:[
+    title: "Doctors",
+    services: [
       {
-        title:"Telehealth",
-        slug:"tele-health",
-        description:"Lorem ipsum dolor, sit amet consectetur adipisicing elit. A, placeat."
+        title: "Telehealth",
+        slug: "tele-health",
+        description:
+          "Lorem ipsum dolor, sit amet consectetur adipisicing elit. A, placeat.",
       },
       {
-        title:"Video prescription refill",
-        slug:"tele-health",
-        description:"Lorem ipsum dolor, sit amet consectetur adipisicing elit. A, placeat."
+        title: "Video prescription refill",
+        slug: "tele-health",
+        description:
+          "Lorem ipsum dolor, sit amet consectetur adipisicing elit. A, placeat.",
       },
       {
-        title:"In-person doctor visit",
-        slug:"tele-health",
-        description:"Lorem ipsum dolor, sit amet consectetur adipisicing elit. A, placeat."
+        title: "In-person doctor visit",
+        slug: "tele-health",
+        description:
+          "Lorem ipsum dolor, sit amet consectetur adipisicing elit. A, placeat.",
       },
       {
-        title:"UTI consult",
-        slug:"tele-health",
-        description:"Lorem ipsum dolor, sit amet consectetur adipisicing elit. A, placeat."
+        title: "UTI consult",
+        slug: "tele-health",
+        description:
+          "Lorem ipsum dolor, sit amet consectetur adipisicing elit. A, placeat.",
       },
     ],
-    
   },
   {
-    title:"Specialists",
-    services:[
+    title: "Specialists",
+    services: [
       {
-        title:"Telehealth",
-        slug:"tele-health",
-        description:"Lorem ipsum dolor, sit amet consectetur adipisicing elit. A, placeat."
+        title: "Telehealth",
+        slug: "tele-health",
+        description:
+          "Lorem ipsum dolor, sit amet consectetur adipisicing elit. A, placeat.",
       },
       {
-        title:"Video prescription refill",
-        slug:"tele-health",
-        description:"Lorem ipsum dolor, sit amet consectetur adipisicing elit. A, placeat."
+        title: "Video prescription refill",
+        slug: "tele-health",
+        description:
+          "Lorem ipsum dolor, sit amet consectetur adipisicing elit. A, placeat.",
       },
       {
-        title:"In-person doctor visit",
-        slug:"tele-health",
-        description:"Lorem ipsum dolor, sit amet consectetur adipisicing elit. A, placeat."
+        title: "In-person doctor visit",
+        slug: "tele-health",
+        description:
+          "Lorem ipsum dolor, sit amet consectetur adipisicing elit. A, placeat.",
       },
       {
-        title:"UTI consult",
-        slug:"tele-health",
-        description:"Lorem ipsum dolor, sit amet consectetur adipisicing elit. A, placeat."
+        title: "UTI consult",
+        slug: "tele-health",
+        description:
+          "Lorem ipsum dolor, sit amet consectetur adipisicing elit. A, placeat.",
       },
     ],
-    
   },
   {
-    title:"Symptoms",
-    services:[
+    title: "Symptoms",
+    services: [
       {
-        title:"Telehealth",
-        slug:"tele-health",
-        description:"Lorem ipsum dolor, sit amet consectetur adipisicing elit. A, placeat."
+        title: "Telehealth",
+        slug: "tele-health",
+        description:
+          "Lorem ipsum dolor, sit amet consectetur adipisicing elit. A, placeat.",
       },
       {
-        title:"Video prescription refill",
-        slug:"tele-health",
-        description:"Lorem ipsum dolor, sit amet consectetur adipisicing elit. A, placeat."
+        title: "Video prescription refill",
+        slug: "tele-health",
+        description:
+          "Lorem ipsum dolor, sit amet consectetur adipisicing elit. A, placeat.",
       },
       {
-        title:"In-person doctor visit",
-        slug:"tele-health",
-        description:"Lorem ipsum dolor, sit amet consectetur adipisicing elit. A, placeat."
+        title: "In-person doctor visit",
+        slug: "tele-health",
+        description:
+          "Lorem ipsum dolor, sit amet consectetur adipisicing elit. A, placeat.",
       },
       {
-        title:"UTI consult",
-        slug:"tele-health",
-        description:"Lorem ipsum dolor, sit amet consectetur adipisicing elit. A, placeat."
+        title: "UTI consult",
+        slug: "tele-health",
+        description:
+          "Lorem ipsum dolor, sit amet consectetur adipisicing elit. A, placeat.",
       },
     ],
-    
-  }
-]
+  },
+];
 
 export function MegaMenu() {
+  // const pathname = usePathname();
+
+  // if (pathname === "/login") return null;
+
   return (
     <NavigationMenu>
       <NavigationMenuList className="space-x-4">
-      {
-        megaMenu.map((item,i)=>(
-         
+        {megaMenu.map((item, i) => (
           <NavigationMenuItem key={i}>
-          <NavigationMenuTrigger>{item.title}</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-              {item.services.map((services) => (
-                <ListItem
-                  key={services.title}
-                  title={services.title}
-                  href={`/services/${services.slug}`}
-                >
-                  {services.description}
-                </ListItem>
-              ))}
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-     
-        ))
-      }
-    
-     
+            <NavigationMenuTrigger>{item.title}</NavigationMenuTrigger>
+            <NavigationMenuContent>
+              <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                {item.services.map((services) => (
+                  <ListItem
+                    key={services.title}
+                    title={services.title}
+                    href={`/services/${services.slug}`}
+                  >
+                    {services.description}
+                  </ListItem>
+                ))}
+              </ul>
+            </NavigationMenuContent>
+          </NavigationMenuItem>
+        ))}
       </NavigationMenuList>
     </NavigationMenu>
-  )
+  );
 }
 
 const ListItem = React.forwardRef<
@@ -175,6 +186,6 @@ const ListItem = React.forwardRef<
         </a>
       </NavigationMenuLink>
     </li>
-  )
-})
-ListItem.displayName = "ListItem"
+  );
+});
+ListItem.displayName = "ListItem";
